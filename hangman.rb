@@ -3,12 +3,13 @@ require "io/console"
 
 class Hangman
   def initialize(word="hello", lives=8)
-    @word = word
+    @word = word.downcase
     @lives = lives
     @guessed_letters = Set.new
   end
 
   def guess(char)
+    char = char.downcase
     return if @guessed_letters.include?(char)
 
     @guessed_letters << char
