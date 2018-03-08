@@ -56,9 +56,10 @@ until game.finished?
   puts "Pick a letter:"
 
   attempt = gets
+  exit unless attempt
   next if attempt.empty? || attempt == "\n" 
 
-  game.guess(attempt.first)
+  game.guess(attempt[0])
 end
 
 if game.lives.zero?
