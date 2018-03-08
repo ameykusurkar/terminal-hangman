@@ -27,7 +27,11 @@ class Hangman
 end
 
 def get_random_word
-  File.readlines("/usr/share/dict/words").sample.chomp
+  begin
+    File.readlines("/usr/share/dict/words").sample.chomp
+  rescue
+    "recalcitrant"
+  end
 end
 
 game = Hangman.new(get_random_word)
