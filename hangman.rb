@@ -1,7 +1,7 @@
 require "set"
 
 class Hangman
-  def initialize(word="hello", lives=5)
+  def initialize(word="hello", lives=8)
     @word = word
     @lives = lives
     @guessed_letters = Set.new
@@ -30,7 +30,7 @@ def get_random_word
   File.readlines("/usr/share/dict/words").sample.chomp
 end
 
-game = Hangman.new(get_random_word, 8)
+game = Hangman.new(get_random_word)
 
 until game.finished?
   system("clear")
