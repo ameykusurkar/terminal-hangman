@@ -1,4 +1,5 @@
 require "set"
+require "io/console"
 
 class Hangman
   def initialize(word="hello", lives=8)
@@ -34,14 +35,19 @@ def random_word
   end
 end
 
+def puts_center(str)
+  _, width = IO.console.winsize
+  puts str.center(width)
+end
+
 game = Hangman.new(random_word)
 
 until game.finished?
   system("clear")
   puts
-  puts game.show
+  puts_center game.show
   puts
-  puts "#{game.word.length}-letter word. #{game.lives} live(s) left."
+  puts_center "#{game.word.length}-letter word. #{game.lives} live(s) left."
   unless game.guessed_letters.empty?
     puts "So far you have tried:"
     puts game.guessed_letters.to_a.sort.join(", ")
