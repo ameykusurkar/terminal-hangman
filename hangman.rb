@@ -58,7 +58,7 @@ until game.finished?
   attempt = gets
   next if attempt.empty? || attempt == "\n" 
 
-  game.guess(attempt[0])
+  game.guess(attempt.first)
 end
 
 if game.lives.zero?
