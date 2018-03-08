@@ -26,7 +26,7 @@ class Hangman
   attr_reader :word, :lives, :guessed_letters
 end
 
-def get_random_word
+def random_word
   begin
     File.readlines("/usr/share/dict/words").sample.chomp
   rescue
@@ -34,7 +34,7 @@ def get_random_word
   end
 end
 
-game = Hangman.new(get_random_word)
+game = Hangman.new(random_word)
 
 until game.finished?
   system("clear")
