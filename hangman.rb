@@ -1,8 +1,10 @@
 require "set"
 require "io/console"
 
+DEFAULT_WORD = "recalcitrant".freeze
+
 class Hangman
-  def initialize(word="hello", lives=8)
+  def initialize(word = DEFAULT_WORD, lives = 8)
     @word = word.downcase
     @lives = lives
     @guessed_letters = Set.new
@@ -29,11 +31,9 @@ class Hangman
 end
 
 def random_word
-  begin
-    File.readlines("/usr/share/dict/words").sample.chomp
-  rescue
-    "recalcitrant"
-  end
+  File.readlines("/usr/share/dict/words").sample.chomp
+rescue Errno::ENOENT
+  DEFAULT_WORD
 end
 
 def puts_center(str)
@@ -57,7 +57,7 @@ until game.finished?
 
   attempt = gets
   exit unless attempt
-  next if attempt.empty? || attempt == "\n" 
+  next if attempt.empty? || attempt == "\n"
 
   game.guess(attempt[0])
 end
