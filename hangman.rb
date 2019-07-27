@@ -56,8 +56,8 @@ until game.finished?
   puts "Pick a letter:"
 
   attempt = gets
-  exit unless attempt
-  next if attempt.empty? || attempt == "\n"
+  exit unless attempt # EOF
+  next unless attempt.match?(/^[A-Za-z]$/)
 
   game.guess(attempt[0])
 end
