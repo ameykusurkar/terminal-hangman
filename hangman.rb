@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 require "set"
 require "io/console"
 
-DEFAULT_WORD = "recalcitrant".freeze
+DEFAULT_WORD = "recalcitrant"
 
 class Hangman
   def initialize(word = DEFAULT_WORD, lives = 8)
@@ -45,8 +47,8 @@ game = Hangman.new(random_word)
 
 until game.finished?
   system("clear")
-  height, _ = IO.console.winsize
-  (height/2 - 4).times { puts }
+  height, = IO.console.winsize
+  (height / 2 - 4).times { puts }
   puts
   puts_center game.show
   puts
