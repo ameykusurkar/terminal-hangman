@@ -45,6 +45,8 @@ game = Hangman.new(random_word)
 
 until game.finished?
   system("clear")
+  height, _ = IO.console.winsize
+  (height/2 - 4).times { puts }
   puts
   puts_center game.show
   puts
